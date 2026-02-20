@@ -66,7 +66,7 @@ RUN set -eux; \
         dst="$(echo "$src" | tr -d 3)"; \
         [ -s "/usr/local/bin/$src" ] && ln -svT "$src" "/usr/local/bin/$dst"; \
     done
-
+RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/python.conf && ldconfig
 USER python
 CMD ["python3"]
 
